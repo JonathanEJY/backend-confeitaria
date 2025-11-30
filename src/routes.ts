@@ -10,6 +10,7 @@ import UpdateUserController from "./controllers/user/UpdateUserController";
 import UpdateLaborController from "./controllers/labor/UpdateLaborController";
 import CreateStockController from "./controllers/stock/CreateStockController";
 import UpdateStockController from "./controllers/stock/UpdateStockController";
+import GetStockController from "./controllers/stock/GetStockController";
 
 import { authMiddleware } from "./middleware/authMiddleware";
 
@@ -50,5 +51,8 @@ router.post("/users/stock", authMiddleware, createStockController.handle);
 
 const updateStockController = new UpdateStockController();
 router.patch("/users/stock", authMiddleware, updateStockController.handle);
+
+const getStockController = new GetStockController();
+router.get("/users/stock", authMiddleware, getStockController.handle);
 
 export default router;

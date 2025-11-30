@@ -5,7 +5,7 @@ class UpdateStockModel {
   async updateStock(dataStock: Stock) {
     try {
       const updatedStock = await prisma.stock.update({
-        where: { uuid: stockId },
+        where: { userId: dataStock.userId },
         data: {
           name: dataStock.name,
         },
@@ -13,7 +13,7 @@ class UpdateStockModel {
       return updatedStock;
     } catch (error) {
       throw new Error(
-        `Failed to update stock with ID ${dataStock.uuid}: ${error}`
+        `Failed to update stock with ID ${dataStock.userId}: ${error}`
       );
     }
   }
