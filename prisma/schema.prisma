@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  // url      = env("DATABASE_URL")
 }
 
 model User {
@@ -69,9 +69,6 @@ model Product {
   userId String
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
 
-  stockId String?
-  stock   Stock?  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
-
   stockProducts StockProduct[]
 
   @@map("products")
@@ -110,8 +107,6 @@ model Stock {
 
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
   userId String @unique
-
-  products Product[]
 
   stockProducts StockProduct[]
 

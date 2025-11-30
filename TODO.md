@@ -25,3 +25,6 @@ Retornar para o service - feito
 
 
 
+PRODUCT -> vai criar apenas o produto sem stockId e sem quantidade ou preço
+STOCKPRODUCT -> vai criar o stockProduct com stockId e quantidade e preço
+FALTA FAZER O MIGRATION DO DB COM A ATUALIZAÇÃO DO SCHEMA
