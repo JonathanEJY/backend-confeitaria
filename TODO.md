@@ -6,7 +6,7 @@ TODO: Criar uma entidade de Produtos para vender (talvez mudar o "produto" atual
 TODO: corrigir o res.json que a IA fez
 TODO: Lembrar de fazer try catch sempre no mvc
 
-
+IDEIA PARA O FUTURO:
 No controller:
 Pegar o user id do request - feito
 Pegar o name do stock para atualizar pelo body do request - feito
@@ -22,9 +22,9 @@ No model:
 Fazer uma query (em outra classe) pra pegar o stockId adquirido acima e fazer o update no stock.name com o nome do stock obtido pelo objeto newStock
 Retornar para o service - feito
 
+PRODUCT -> vai criar apenas o produto sem stockId e sem quantidade ou preço. apenas nome, unit e userId
+STOCKPRODUCT -> vai criar o stockProduct com stockId e quantidade e preço. conta com o productId ou o userId?
 
+é preciso fazer uma verificação no userId pra ver se bate com o userId que existe em product, stock, etc. Pois se alguém inserir um uuid de outra pessoa, ela pode alterar os dados desse usuário. ou seja, para fazer qualquer coisa nas entidades, é preciso checar se o userId que está sendo entregue pelo JWT é o mesmo userId que está salvo no DB.
 
-
-PRODUCT -> vai criar apenas o produto sem stockId e sem quantidade ou preço
-STOCKPRODUCT -> vai criar o stockProduct com stockId e quantidade e preço
-FALTA FAZER O MIGRATION DO DB COM A ATUALIZAÇÃO DO SCHEMA
+faltou arrumar essa questões acima, sobre compund unique key e coisas do tipo.

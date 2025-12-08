@@ -22,6 +22,7 @@ export type Labor = {
 // isso aqui só vai registrar no user. o stock_product que vai ter o registro do userId e o stockId
 export type Product = {
   name: string;
+  uuid?: string;
   // price: number;
   // quantity: number;
   unit: Unit;

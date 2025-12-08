@@ -13,6 +13,7 @@ import UpdateStockController from "./controllers/stock/UpdateStockController";
 import GetStockController from "./controllers/stock/GetStockController";
 import DeleteStockController from "./controllers/stock/DeteleStockController";
 import CreateProductController from "./controllers/product/CreateProductController";
+import UpdateProductController from "./controllers/product/UpdateProductController";
 
 import { authMiddleware } from "./middleware/authMiddleware";
 
@@ -64,5 +65,8 @@ router.delete("/users/stock", authMiddleware, deleteStockController.handle);
 // Product
 const createProductController = new CreateProductController();
 router.post("/users/product", authMiddleware, createProductController.handle);
+
+const updateProductController = new UpdateProductController();
+router.patch("/users/product", authMiddleware, updateProductController.handle);
 
 export default router;
