@@ -4,14 +4,17 @@ import { Request, Response } from "express";
 
 class UpdateProductController {
   async handle(req: Request, res: Response) {
-    const userId = req.user!.userId
+    const userId = req.user!.uuid;
+    console.log("User ID from token:", userId);
     const { uuid, name, unit } = req.body;
-    const productData = {
+    const productData: Product = {
       uuid,
       name,
       unit,
-      userId
-    }
+      userId,
+    };
+
+    // TODO: falta enviar o productId pelo client
 
     const updateProductService = new UpdateProductService();
     const updatedProduct = await updateProductService.execute(productData);
