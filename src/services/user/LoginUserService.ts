@@ -1,6 +1,6 @@
 import LoginUserModel from "../../models/user/LoginUserModel";
 import * as argon2 from "argon2";
-import {sign} from "jsonwebtoken";
+import { sign } from "jsonwebtoken";
 
 class LoginUserService {
   async execute(email: string, password: string) {
@@ -29,7 +29,12 @@ class LoginUserService {
       }
     );
 
-    const safeUser = {uuid: user.uuid, username: user.username, email: user.email, token: token};
+    const safeUser = {
+      uuid: user.uuid,
+      username: user.username,
+      email: user.email,
+      token: token,
+    };
     return safeUser;
   }
 }

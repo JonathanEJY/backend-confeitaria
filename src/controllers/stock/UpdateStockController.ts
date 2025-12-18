@@ -16,7 +16,3 @@ class UpdateStockController {
 }
 
 export default UpdateStockController;
-// TODO: é preciso fazer um get no stockId usando o userId pra pegar. Talvez criar um utils?
-
-// Controller: pega userId do JWT e name do body, chama service.
-// Service: faz findUnique({ where: { userId } }), se não achar retorna 404, senão atualiza pelo uuid do stock.

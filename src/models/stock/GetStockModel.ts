@@ -5,10 +5,10 @@ class GetStockModel {
     try {
       const stock = await prisma.stock.findUnique({
         where: { userId: userId },
-        omit:{
+        omit: {
           userId: true,
           uuid: true,
-        }
+        },
       });
       return stock;
     } catch (error) {
@@ -18,6 +18,3 @@ class GetStockModel {
 }
 
 export default GetStockModel;
-
-// Não faz sentido eu ter um model pra pegar o stockId sendo que eu preciso do userId pra identificar qual stock que eu quero.
-// Talvez só faça sentido se o stock cresça e tenha outras características, mas no momento só tem o userId mesmo.

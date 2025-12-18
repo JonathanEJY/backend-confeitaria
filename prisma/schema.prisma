@@ -64,8 +64,6 @@ model Product {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  // cadê a quantidade do protudo, tipo quantas gramas tem etc
-
   userId String
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
 
@@ -83,7 +81,6 @@ model StockProduct {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
-  // cadê a quantidade do protudo, tipo quantas gramas tem etc
 
   productId String
   product   Product @relation(fields: [productId], references: [uuid], onDelete: Cascade)
@@ -91,7 +88,6 @@ model StockProduct {
   stockId String
   stock   Stock  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
 
-  //movements StockMovement[]
 
   @@index([productId])
   @@index([stockId])

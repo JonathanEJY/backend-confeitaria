@@ -16,7 +16,3 @@ class LoginUserController {
 }
 
 export default LoginUserController;
-
-// criar error handling middleware para tratar erros de forma global
-// criar error para usar no json de resposta
-// criar testes para esse endpoint de login

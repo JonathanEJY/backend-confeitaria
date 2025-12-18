@@ -14,8 +14,6 @@ class UpdateProductController {
       userId,
     };
 
-    // TODO: falta enviar o productId pelo client
-
     const updateProductService = new UpdateProductService();
     const updatedProduct = await updateProductService.execute(productData);
 

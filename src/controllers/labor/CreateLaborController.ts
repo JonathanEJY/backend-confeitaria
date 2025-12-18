@@ -15,10 +15,9 @@ class CreateLaborController {
       const newLabor = await createLaborService.execute(labor);
       res.json(newLabor);
     } catch (error: any) {
-      res.status(409).json({ error: 'User já tem Labor criado' });
+      res.status(409).json({ error: "User já tem Labor criado" });
     }
   }
 }
-// TODO: return error if user already has labor created
 
 export default CreateLaborController;
