@@ -30,3 +30,18 @@ export type Stock = {
 };
 
 export type Unit = "kg" | "g" | "L" | "ml" | "un";
+
+export type productData = {
+  userId: string;
+  productId: string;
+};
+
+export type StockProduct = {
+  stockProductId: string;
+  quantity: number;
+  costPrice: number;
+  lot?: string;
+  expiresAt?: Date;
+  productId: string;
+  stockId: string;
+};
