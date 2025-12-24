@@ -1,5 +1,10 @@
 import UpdateUserModel from "../../models/user/UpdateUserModel";
-import type { User } from "../../types";
+
+type User = {
+  username: string;
+  email: string;
+  passwordHash: string;
+};
 
 class UpdateUserService {
   async execute(userId: string, data: User) {

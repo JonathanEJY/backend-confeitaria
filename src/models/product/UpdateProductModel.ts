@@ -1,5 +1,12 @@
 import prisma from "../../../prisma/client";
-import type { Product } from "../../types";
+import type { Unit } from "../../types/common.types";
+
+export type Product = {
+  name: string;
+  uuid?: string;
+  unit: Unit;
+  userId: string;
+};
 
 class UpdateProductModel {
   async updateProduct(productData: Product){

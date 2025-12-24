@@ -1,5 +1,9 @@
 import GetProductModel from "../../models/product/GetProductModel";
-import type { productData } from "../../types";
+
+export type productData = {
+  userId: string;
+  productId: string;
+};
 
 class GetProductService {
   async execute(productData: productData) {

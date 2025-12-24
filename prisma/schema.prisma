@@ -27,7 +27,8 @@ model User {
 
   products Product[] @relation
 
-  stock Stock? @relation
+  stock   Stock?   @relation
+  recipes Recipe[] @relation
 
   @@map("users")
 }
@@ -39,13 +40,19 @@ model Labor {
   workDaysPerMonth Int
   workHoursPerDay  Float
 
-  electricity Float?
-  water       Float?
-  rent        Float?
-  wage        Float?
+  electricity Float? @default(0)
+  water       Float? @default(0)
+  rent        Float? @default(0)
+  wage        Float? @default(0)
+
+  gas      Float? @default(0)
+  internet Float? @default(0)
+  other    Float? @default(0)
 
   userId String @unique
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  @@map("labor")
 }
 
 enum Unit {
@@ -67,7 +74,8 @@ model Product {
   userId String
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
 
-  stockProducts StockProduct[]
+  stockProducts     StockProduct[]
+  recipeIngredients RecipeIngredient[]
 
   @@map("products")
 }
@@ -81,13 +89,11 @@ model StockProduct {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 
-
   productId String
   product   Product @relation(fields: [productId], references: [uuid], onDelete: Cascade)
 
   stockId String
   stock   Stock  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
-
 
   @@index([productId])
   @@index([stockId])
@@ -109,17 +115,52 @@ model Stock {
   @@map("stocks")
 }
 
-// model Recipe {
-//   uuid      String   @id @default(uuid())
-//   id        Int      @default(autoincrement())
-//   name      String
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
+model Recipe {
+  uuid      String   @id @default(uuid())
+  id        Int      @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-//   userId String
-//   user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  yield     Decimal @db.Decimal(9, 2)
+  yieldUnit Unit
 
-//   products Product[]
+  prepTimeMinutes Int @default(0)
 
-//   @@map("recipes")
-// }
+  ingredientsCost Decimal @default(0) @db.Decimal(9, 2)
+  laborCost       Decimal @default(0) @db.Decimal(9, 2)
+  packagingCost   Decimal @default(0) @db.Decimal(9, 2)
+  totalCost       Decimal @default(0) @db.Decimal(9, 2)
+
+  profitMargin   Decimal? @db.Decimal(5, 2)
+  suggestedPrice Decimal? @db.Decimal(9, 2)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  ingredients RecipeIngredient[]
+
+  @@map("recipes")
+}
+
+model RecipeIngredient {
+  uuid     String  @id @default(uuid())
+  quantity Decimal @db.Decimal(9, 2)
+
+  unitCost  Decimal @db.Decimal(9, 2)
+  totalCost Decimal @db.Decimal(9, 2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [uuid], onDelete: Cascade)
+
+  productId String
+  product   Product @relation(fields: [productId], references: [uuid], onDelete: Cascade)
+
+  @@unique([recipeId, productId])
+  @@index([recipeId])
+  @@index([productId])
+  @@map("recipe_ingredients")
+}

@@ -1,0 +1,1 @@
+export type Unit = "kg" | "g" | "L" | "ml" | "un";

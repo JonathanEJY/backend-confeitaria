@@ -1,5 +1,9 @@
 import UpdateStockModel from "../../models/stock/UpdateStockModel";
-import type { Stock } from "../../types";
+
+export type Stock = {
+  name: string;
+  userId: string;
+};
 
 class UpdateStockService {
   async execute(dataStock: Stock) {

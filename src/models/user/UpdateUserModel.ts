@@ -1,5 +1,10 @@
 import prisma from "../../../prisma/client";
-import type { User } from "../../types";
+
+type User = {
+  username: string;
+  email: string;
+  passwordHash: string;
+};
 
 class UpdateUserModel {
   async execute(userId: string, userData: User) {

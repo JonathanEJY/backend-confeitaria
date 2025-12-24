@@ -1,5 +1,14 @@
 import prisma from "../../../prisma/client";
-import type { StockProduct } from "../../types";
+
+export type StockProduct = {
+  stockProductId: string;
+  quantity: number;
+  costPrice: number;
+  lot?: string;
+  expiresAt?: Date;
+  productId: string;
+  stockId: string;
+};
 
 class CreateStockProductModel {
   async createStockProduct(stockProductData: StockProduct) {

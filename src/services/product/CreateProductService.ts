@@ -1,5 +1,12 @@
 import CreateProductModel from "../../models/product/CreateProductModel";
-import type { Product } from "../../types";
+import type { Unit } from "../../types/common.types";
+
+export type Product = {
+  name: string;
+  uuid?: string;
+  unit: Unit;
+  userId: string;
+};
 
 
 class CreateProductService {

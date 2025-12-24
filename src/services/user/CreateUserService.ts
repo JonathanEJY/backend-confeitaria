@@ -1,6 +1,11 @@
 import CreateUserModel from "../../models/user/CreateUserModel";
-import { User } from "../../types";
 import * as argon2 from "argon2";
+
+type User = {
+  username: string;
+  email: string;
+  passwordHash: string;
+};
 
 class CreateUserService {
   async execute(user: User) {

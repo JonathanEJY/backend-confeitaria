@@ -1,5 +1,17 @@
 import prisma from "../../../prisma/client";
-import type { Labor } from "../../types";
+
+export type Labor = {
+  desiredSalary: number;
+  workDaysPerMonth: number;
+  workHoursPerDay: number;
+
+  electricity: number;
+  water: number;
+  rent: number;
+  wage: number;
+
+  userId: string;
+};
 
 class UpdateLaborModel {
   async updateLabor(laborData: Labor, userId: string) {

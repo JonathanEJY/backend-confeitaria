@@ -1,5 +1,17 @@
 import UpdateLaborModel from "../../models/labor/UpdateLaborModel";
-import type { Labor } from "../../types";
+
+export type Labor = {
+  desiredSalary: number;
+  workDaysPerMonth: number;
+  workHoursPerDay: number;
+
+  electricity: number;
+  water: number;
+  rent: number;
+  wage: number;
+
+  userId: string;
+};
 
 class UpdateLaborService {
   async execute(laborData: Labor, userId: string) {

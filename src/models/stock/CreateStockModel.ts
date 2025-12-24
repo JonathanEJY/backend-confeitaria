@@ -1,5 +1,9 @@
 import prisma from "../../../prisma/client";
-import type { Stock } from "../../types";
+
+export type Stock = {
+  name: string;
+  userId: string;
+};
 
 class CreateStockModel {
   async execute(dataStock: Stock) {

@@ -1,5 +1,13 @@
 import UpdateProductModel from "../../models/product/UpdateProductModel";
-import type { Product } from "../../types";
+import type { Unit } from "../../types/common.types";
+
+export type Product = {
+  name: string;
+  uuid?: string;
+  unit: Unit;
+  userId: string;
+};
+
 
 class UpdateProductService {
   async execute(productData: Product) {

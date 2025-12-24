@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 import CreateStockService from "../../services/stock/CreateStockService";
-import type { Stock } from "../../types";
+
+export type Stock = {
+  name: string;
+  userId: string;
+};
 
 class CreateStockController {
   async handle(req: Request, res: Response) {

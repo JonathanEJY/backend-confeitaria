@@ -1,5 +1,9 @@
 import prisma from "../../../prisma/client";
-import type { productData } from "../../types";
+
+export type productData = {
+  userId: string;
+  productId: string;
+};
 
 class GetAllProductsModel {
   async getAllProducts(userId: string) {

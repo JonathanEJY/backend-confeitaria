@@ -1,6 +1,18 @@
 import { Request, Response } from "express";
 import CreateLaborService from "../../services/labor/CreateLaborService";
-import type { Labor } from "../../types";
+
+export type Labor = {
+  desiredSalary: number;
+  workDaysPerMonth: number;
+  workHoursPerDay: number;
+
+  electricity: number;
+  water: number;
+  rent: number;
+  wage: number;
+
+  userId: string;
+};
 
 class CreateLaborController {
   async handle(req: Request, res: Response) {

@@ -1,5 +1,14 @@
 import CreateStockProductModel from "../../models/stockProduct/CreateStockProductModel";
-import type { StockProduct } from "../../types";
+
+export type StockProduct = {
+  stockProductId: string;
+  quantity: number;
+  costPrice: number;
+  lot?: string;
+  expiresAt?: Date;
+  productId: string;
+  stockId: string;
+};
 
 class CreateStockProductService {
   async execute(stockProductData: StockProduct){

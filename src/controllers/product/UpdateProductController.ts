@@ -1,6 +1,13 @@
 import UpdateProductService from "../../services/product/UpdateProductService";
-import type { Product } from "../../types";
 import { Request, Response } from "express";
+import type { Unit } from "../../types/common.types";
+
+export type Product = {
+  name: string;
+  uuid?: string;
+  unit: Unit;
+  userId: string;
+};
 
 class UpdateProductController {
   async handle(req: Request, res: Response) {

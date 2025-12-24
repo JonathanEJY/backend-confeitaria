@@ -1,6 +1,15 @@
 import UpdateStockProductService from "../../services/stockProduct/UpdateStockProductService";
 import { Request, Response } from "express";
-import type { StockProduct } from "../../types";
+
+export type StockProduct = {
+  stockProductId: string;
+  quantity: number;
+  costPrice: number;
+  lot?: string;
+  expiresAt?: Date;
+  productId: string;
+  stockId: string;
+};
 
 class UpdateStockProductController {
   async handle(req: Request, res: Response) {
